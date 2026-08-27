@@ -1,0 +1,32 @@
+{
+  "generatedAt": "2026-08-26T15:01:18.314Z",
+  "benchmark": "Text-only semantic mapping with all written question labels removed",
+  "results": [
+    {
+      "model": "nvidia/nemotron-3-super-120b-a12b:free",
+      "success": true,
+      "semanticMappingScore": 1,
+      "wallTimeMs": 9087,
+      "unmatchedCount": 1,
+      "metrics": [
+        {
+          "task": "semantic mapping",
+          "requestedModel": "nvidia/nemotron-3-super-120b-a12b:free",
+          "resolvedModel": "nvidia/nemotron-3-super-120b-a12b:free",
+          "durationMs": 9084,
+          "promptTokens": 687,
+          "completionTokens": 670,
+          "totalTokens": 1357,
+          "attempt": 1
+        }
+      ]
+    },
+    {
+      "model": "openai/gpt-oss-120b:free",
+      "success": false,
+      "wallTimeMs": 75,
+      "error": "This model is unavailable for free. The paid version is available now - use this slug instead: openai/gpt-oss-120b",
+      "metrics": []
+    }
+  ]
+}
