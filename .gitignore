@@ -1,0 +1,12 @@
+.env*
+!.env.example
+.next/
+node_modules/
+coverage/
+playwright-report/
+test-results/
+*.log
+*.tsbuildinfo
+.DS_Store
+benchmarks/results/20*.json
+scripts/git-commit-each-file.sh
