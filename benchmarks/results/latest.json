@@ -1,0 +1,69 @@
+{
+  "generatedAt": "2026-08-26T15:00:00.356Z",
+  "fixture": "Synthetic 5-question science paper and 2-page out-of-order handwritten answer sheet",
+  "weighting": {
+    "questionLabels": 0.25,
+    "explicitAnswerLabels": 0.15,
+    "mapping": 0.3,
+    "boundingBoxes": 0.2,
+    "transcriptionKeywords": 0.1
+  },
+  "results": [
+    {
+      "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+      "success": true,
+      "wallTimeMs": 268282,
+      "questionLabelScore": 1,
+      "explicitAnswerLabelScore": 1,
+      "mappingScore": 1,
+      "boundingBoxScore": 0.22032061965193092,
+      "transcriptionKeywordScore": 0.6666666666666666,
+      "overallScore": 0.8107307905970528,
+      "metrics": [
+        {
+          "task": "answer extraction",
+          "requestedModel": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+          "resolvedModel": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+          "durationMs": 107414,
+          "promptTokens": 4311,
+          "completionTokens": 5780,
+          "totalTokens": 10091,
+          "attempt": 1
+        },
+        {
+          "task": "question extraction",
+          "requestedModel": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+          "resolvedModel": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+          "durationMs": 197270,
+          "promptTokens": 2364,
+          "completionTokens": 4483,
+          "totalTokens": 6847,
+          "attempt": 2
+        },
+        {
+          "task": "semantic mapping",
+          "requestedModel": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+          "resolvedModel": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+          "durationMs": 70897,
+          "promptTokens": 626,
+          "completionTokens": 3345,
+          "totalTokens": 3971,
+          "attempt": 1
+        }
+      ],
+      "counts": {
+        "questions": 5,
+        "answerBlocks": 6,
+        "unmatched": 1
+      },
+      "extractedLabels": [
+        "1.",
+        "2.",
+        "3.",
+        "11 (a)",
+        "11 (b)"
+      ],
+      "mappingFallbackError": null
+    }
+  ]
+}
