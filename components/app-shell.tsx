@@ -2,7 +2,6 @@
 
 import {
   Bell,
-  BadgeCheck,
   BookOpen,
   ChevronLeft,
   CircleHelp,
@@ -37,8 +36,8 @@ export function AppShell({ children, compact = false }: { children: ReactNode; c
       </aside>
       <div className="main-frame">
         <header className="topbar">
-          <div className="topbar-title"><button aria-label="Back"><ChevronLeft /></button><span>Exams</span><i>/</i><strong>AI Answer Mapping</strong></div>
-          <div className="topbar-actions"><span className="system-status"><BadgeCheck /> AI workspace ready</span><button aria-label="Help"><CircleHelp /></button><button aria-label="Notifications"><Bell /></button><div className="avatar">MR</div><span className="teacher-name">Madhur Rastogi</span></div>
+          <div className="topbar-title"><button aria-label="Back"><ChevronLeft /></button><span>Exams</span></div>
+          <div className="topbar-actions"><button aria-label="Help"><CircleHelp /></button><button aria-label="Notifications"><Bell /></button><button aria-label="AI assistant"><Sparkles /></button><div className="avatar">MR</div><span className="teacher-name">Madhur Rastogi</span></div>
           <button className="mobile-menu" aria-label="Open navigation"><Menu /></button>
         </header>
         <main className="main-content">{children}</main>
