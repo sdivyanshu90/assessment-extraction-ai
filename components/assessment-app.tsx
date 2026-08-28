@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, FlaskConical, ShieldCheck, Sparkles } from "lucide-react";
+import { ArrowRight, BookOpenCheck, FlaskConical, Sparkles } from "lucide-react";
 import { useEffect, useState } from "react";
 import { AppShell } from "@/components/app-shell";
 import { ProcessingScreen } from "@/components/processing-screen";
@@ -139,15 +139,9 @@ export function AssessmentApp() {
       {view === "processing" ? <ProcessingScreen stage={stage} progress={progress} /> : (
         <section className="upload-screen">
           <div className="upload-heading">
-            <div className="teacher-illustration"><span><Sparkles /></span><strong>AI</strong></div>
-            <p className="eyebrow">AI Teacher&apos;s Toolkit</p>
-            <h1>Upload <em>Question Paper &amp; Answer Sheets</em></h1>
-            <p>Map every handwritten response to its question and review it in the original document.</p>
-            <div className="workflow-pills" aria-label="Assessment workflow">
-              <span><b>1</b> Upload documents</span><i />
-              <span><b>2</b> AI extraction</span><i />
-              <span><b>3</b> Review mapping</span>
-            </div>
+            <h1>Upload <em>Question Paper <span>&amp; Answer Sheets</span></em></h1>
+            <p className="upload-subtitle">Upload both files to get started</p>
+            <div className="teacher-illustration"><span><Sparkles /></span><strong><BookOpenCheck /></strong></div>
           </div>
           <div className="upload-card">
             <FileDropzone id="question-paper" title="Question Paper" accent="#f06449" files={questionFiles} onChange={setQuestionFiles} onError={setError} />
@@ -155,9 +149,9 @@ export function AssessmentApp() {
           </div>
           {error && <div className="upload-error" role="alert">{error}</div>}
           <button className="primary-action" disabled={!questionFiles.length || !answerFiles.length} onClick={processAssessment}>
-            Process Assessment <ArrowRight />
+            Start Mapping <ArrowRight />
           </button>
-          <div className="privacy-note"><ShieldCheck /> Files are processed in memory and are not stored by this application.</div>
+          <p className="upload-helper">Once both files are uploaded, you&apos;ll be able to map answers with questions</p>
           <button className="demo-link" onClick={loadDemo}><FlaskConical /> Explore a sample result</button>
         </section>
       )}
