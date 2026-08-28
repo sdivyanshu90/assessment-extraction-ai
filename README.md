@@ -80,7 +80,7 @@ flowchart TB
         Validate --> Render[PDF.js and image rendering]
         Render --> Batch[Size-aware page batches<br/>normalized page dimensions]
         State[In-memory assessment state]
-        Questions[Question navigation and detail panel]
+        Questions[Question navigation and inline AI feedback]
         Viewer[Answer-sheet viewer<br/>responsive overlay coordinates]
         Progress[Real processing stages]
     end
