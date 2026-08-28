@@ -1,10 +1,9 @@
 "use client";
 
-import { ArrowLeft, CheckCircle2, CircleSlash, Flag, ListChecks, RotateCcw } from "lucide-react";
+import { ArrowLeft, CheckCircle2, CircleSlash, FileText, Flag, ListChecks, RotateCcw, ScanSearch } from "lucide-react";
 import { useMemo, useState } from "react";
 import type { AssessmentResult, DocumentPage, HighlightTarget } from "@/lib/types";
 import { AnswerViewer } from "./answer-viewer";
-import { QuestionDetail } from "./question-detail";
 import { QuestionList } from "./question-list";
 
 export function ResultsView({
@@ -19,6 +18,7 @@ export function ResultsView({
   onReset: () => void;
 }) {
   const [target, setTarget] = useState<HighlightTarget>(() => ({ kind: "question", id: result.questions[0]?.id || "" }));
+  const [mobilePane, setMobilePane] = useState<"questions" | "viewer">("questions");
   const answered = result.mappings.filter((item) => item.status === "answered").length;
   const review = result.mappings.filter((item) => item.status === "answered" && item.confidence < 0.85).length + result.unmatchedAnswers.length;
   const score = useMemo(() => {
@@ -44,9 +44,12 @@ export function ResultsView({
         <button className="new-assessment" onClick={onReset}><RotateCcw /> New assessment</button>
       </header>
       {result.warnings.map((warning) => <div className="results-warning" role="status" key={warning}>{warning}</div>)}
-      <div className="results-grid">
+      <nav className="mobile-result-tabs" aria-label="Result view">
+        <button className={mobilePane === "questions" ? "active" : ""} onClick={() => setMobilePane("questions")}><FileText /> Questions</button>
+        <button className={mobilePane === "viewer" ? "active" : ""} onClick={() => setMobilePane("viewer")}><ScanSearch /> Answer sheet</button>
+      </nav>
+      <div className={`results-grid mobile-pane-${mobilePane}`}>
         <QuestionList result={result} target={target} onSelect={setTarget} />
-        <QuestionDetail result={result} target={target} debug={debug} />
         <AnswerViewer result={result} pages={pages} target={target} debug={debug} />
       </div>
     </div>
