@@ -18,7 +18,7 @@ await page.locator("#answer-sheet").setInputFiles([
   path.join(process.cwd(), "benchmarks", "fixtures", "answer-page-1.png"),
   path.join(process.cwd(), "benchmarks", "fixtures", "answer-page-2.png"),
 ]);
-await page.getByRole("button", { name: /process assessment/i }).waitFor();
+await page.getByRole("button", { name: /start mapping/i }).waitFor();
 await shot(page, "02-upload-ready.png");
 
 await open(page, "/?preview=processing");
@@ -38,8 +38,9 @@ await shot(mobilePage, "05-upload-mobile.png", true);
 await open(mobilePage, "/?preview=results");
 await mobilePage.getByText("Question & answer mapping", { exact: true }).waitFor();
 await shot(mobilePage, "06-results-mobile.png", true);
-await mobilePage.locator(".results-grid").evaluate((element) => { element.scrollTop = element.scrollHeight; });
-await mobilePage.waitForTimeout(300);
+await mobilePage.getByRole("button", { name: /answer sheet/i }).click();
+await mobilePage.locator(".active-highlight").first().waitFor();
+await mobilePage.evaluate(() => window.scrollTo(0, 0));
 await shot(mobilePage, "07-results-mobile-viewer.png");
 await mobile.close();
 await browser.close();
