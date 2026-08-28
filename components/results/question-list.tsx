@@ -1,6 +1,6 @@
 "use client";
 
-import { AlertTriangle, Check, CircleSlash, Link2Off } from "lucide-react";
+import { AlertTriangle, Check, CircleSlash, Link2Off, Sparkles } from "lucide-react";
 import type { AssessmentResult, HighlightTarget } from "@/lib/types";
 
 export function QuestionList({
@@ -18,7 +18,7 @@ export function QuestionList({
   return (
     <aside className="question-list-panel" aria-label="Extracted questions">
       <div className="question-list-heading">
-        <span>Extracted questions</span><strong>{result.questions.length}</strong>
+        <span>Extracted Questions <i>(from question paper)</i></span><strong>{result.questions.length}</strong>
       </div>
       <div className="question-list-scroll">
         {result.questions.map((question) => {
@@ -36,7 +36,13 @@ export function QuestionList({
               <span className="question-number">{question.displayNumber}</span>
               <span className="question-preview"><strong>{question.text}</strong><small>
                 {mapping.status === "unanswered" ? <><CircleSlash /> Unanswered</> : needsReview ? <><AlertTriangle /> Needs review</> : <><Check /> Answered</>}
-              </small></span>
+              </small>
+              {selected && mapping.status === "answered" && (
+                <span className="selected-answer-preview">
+                  <span><Sparkles /> AI Feedback</span>
+                  <q>{grade?.feedback || `Mapped confidently to ${mapping.segments.length} answer region${mapping.segments.length === 1 ? "" : "s"}.`}</q>
+                </span>
+              )}</span>
               {grade && grade.score !== null && grade.maxMarks !== null && <span className="score-chip">{grade.score}/{grade.maxMarks}</span>}
             </button>
           );
